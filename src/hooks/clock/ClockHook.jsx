@@ -22,7 +22,7 @@ const ClockHook = (props) => {
     return () => {
       clearInterval(timerID);
     };
-  }, [person]);
+  });
 
   return (
     <div>
