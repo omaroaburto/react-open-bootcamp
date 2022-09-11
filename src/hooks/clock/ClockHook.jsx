@@ -10,14 +10,14 @@ const ClockHook = (props) => {
   const [person, setPerson] = useState(state);
   const tick = () => {
     const edad = person.edad + 1;
-    setPerson({
+    return setPerson({
       ...person,
       fecha: new Date(),
       edad,
     });
   };
   useEffect(() => {
-    const timerID = setInterval(() => tick, 1000);
+    const timerID = setInterval(() => tick(), 1000);
 
     return () => {
       clearInterval(timerID);
