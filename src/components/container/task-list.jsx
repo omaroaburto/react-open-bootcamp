@@ -9,10 +9,12 @@ const TaskListComponent = () => {
     false,
     LEVELS.NORMAL
   );
-  const [taks, setTaks] = useState(defaultTaks)
+  const [taks, setTaks] = useState(defaultTaks);
+  const [loading, setLoading] = useState(true);
   //control de ciclo de vida
   useEffect(() => {
     console.log("Taks state has been modified");
+    setLoading(false);
     return () => {
       console.log("TaskList component is going to ammount.");
     }

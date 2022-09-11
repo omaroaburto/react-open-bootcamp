@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Contact } from '../../models';
+import GreetingStyled from './GreetingStyled';
 
 const Greeting = () => {
+  const contactData = new Contact("juan","abarca","ju.abarca@gmail.com",true); 
   return (
-    <h1>Hola mundo gente</h1>
+    <> 
+      <GreetingStyled contact={contactData} />
+    </>
   )
 }
 
