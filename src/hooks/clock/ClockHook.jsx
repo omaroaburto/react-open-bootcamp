@@ -1,21 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
-const state = {
-  fecha: new Date(),
-  edad: 0,
-  nombre: "Martín",
-  apellidos: "San José",
-};
+
 const ClockHook = (props) => {
+  const state = {
+    fecha: new Date(),
+    edad: 0,
+    nombre: "Martín",
+    apellidos: "San José",
+  };
   const [person, setPerson] = useState(state);
-  const tick = () =>{
+  const tick = () => {
     const edad = person.edad + 1;
     setPerson({
-        ...person,
-        fecha: new Date(),
-        edad
-    })
-  }
+      ...person,
+      fecha: new Date(),
+      edad,
+    });
+  };
   useEffect(() => {
     const timerID = setInterval(() => tick, 1000);
 
@@ -37,7 +37,5 @@ const ClockHook = (props) => {
     </div>
   );
 };
-
-ClockHook.propTypes = {};
 
 export default ClockHook;
