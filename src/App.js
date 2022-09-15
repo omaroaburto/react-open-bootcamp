@@ -1,21 +1,20 @@
-import "./App.css";
-import Greeting from "./components/pure/Greeting";
+//import Greeting from "./components/pure/Greeting";
 //import GreetingStyled from "./components/pure/GreetingStyled";
 //import { ComponenteConContexto } from "./hooks/Ejemplo3";
 //import Ejemplo1 from "./hooks/Ejemplo1";
 //import Ejemplo2 from "./hooks/Ejemplo2";
 //import ComponenteA from "./components/container/ComponenteA";
-//import TaskListComponent from "./components/container/task-list";
+//import Father from "./components/container/Father";
+import TaskListComponent from "./components/container/task-list";
 // import Greeting from "./components/pure/Greeting";
+import './App.css';
 
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">  
+    <div>  
         {/* <TaskListComponent/> */}
-        <Greeting/>
-      </header>
+        <TaskListComponent/> 
     </div>
   );
 }
