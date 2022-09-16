@@ -13,15 +13,15 @@ const ContactList = ({ contact, update, remove, create }) => {
   const updateContact = (contact) => {
     console.log("update contact");
     const contactData = [...contacts];
-    const index = contactData.indexOf(contact);
+    const index = contacts.indexOf(contact);
     contactData[index].connected = !contactData[index].connected;
     setContacts(contactData);
   };
 
-  const removeContact = () => {
+  const removeContact = (contact) => {
     console.log("remove contact");
     const contactData = [...contacts];
-    const index = contactData.indexOf(contact);
+    const index = contacts.indexOf(contact);
     contactData.splice(index, 1);
     setContacts(contactData);
   };
@@ -51,7 +51,7 @@ const ContactList = ({ contact, update, remove, create }) => {
       <div
         className="card"
         style={{ 
-            minWidth: "520px", 
+            minWidth: "auto", 
             boxShadow: "5px 5px 5px black", 
         }}
       >

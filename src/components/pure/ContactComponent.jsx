@@ -40,9 +40,9 @@ const ContactComponent = ({ contact, update, remove }) => {
 
   return (
     <tr>
-      <th>{contact.firstName}</th>
-      <th>{contact.lastName}</th>
-      <th>{contact.email}</th>
+      <th>{contact.firstName.toLowerCase()}</th>
+      <th>{contact.lastName.toLowerCase()}</th>
+      <th>{contact.email.toLowerCase()}</th>
       <th>{isConnected()}</th>
       <th style={{
         display: 'flex',
