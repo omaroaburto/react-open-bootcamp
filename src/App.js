@@ -8,14 +8,16 @@
 //import TaskListComponent from "./components/container/task-list";
 // import Greeting from "./components/pure/Greeting";
 import './App.css';
-import ContactList from "./components/container/ContactList";
+import Square from './components/pure/Square';
+//import OptionalRender from './components/pure/OptionalRender';
+//import ContactList from "./components/container/ContactList";
 
 function App() {
   
   return (
     <div>  
         {/* <TaskListComponent/> */}
-        <ContactList/> 
+        <Square/> 
     </div>
   );
 }
