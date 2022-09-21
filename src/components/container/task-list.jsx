@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Task, LEVELS } from "../../models/";
 import TaskComponent from "../pure/taks";
-import TaskForm from "../pure/forms/TaskForm";
+//import TaskForm from "../pure/forms/TaskForm";
+import TaskFormFormik from "../pure/forms/TaskFormFormik";
 
 const TaskListComponent = ({ task, complete, remove }) => {
   const defaultTaks1 = new Task(
@@ -131,7 +132,7 @@ const TaskListComponent = ({ task, complete, remove }) => {
           width: "100vw",
         }}
       >
-        <TaskForm add={addTask} />
+        <TaskFormFormik add={addTask} />
         <div
           className="card"
           style={{
