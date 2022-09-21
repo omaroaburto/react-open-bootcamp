@@ -8,7 +8,8 @@
 //import TaskListComponent from "./components/container/task-list";
 // import Greeting from "./components/pure/Greeting";
 import './App.css';
-import LoginFormFormik from './components/pure/forms/LoginFormFormik';
+//import LoginFormFormik from './components/pure/forms/LoginFormFormik';
+import RegisterFormFormik from './components/pure/forms/RegisterFormFormik';
 //import Square from './components/pure/Square';
 //import OptionalRender from './components/pure/OptionalRender';
 //import ContactList from "./components/container/ContactList";
@@ -18,7 +19,7 @@ function App() {
   return (
     <div>  
         {/* <TaskListComponent/> */}
-        <LoginFormFormik/> 
+        <RegisterFormFormik></RegisterFormFormik> 
     </div>
   );
 }
