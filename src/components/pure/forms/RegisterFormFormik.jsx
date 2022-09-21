@@ -146,7 +146,7 @@ const RegisterFormFormik = () => {
                 id="role"
                 name="role"
                 required
-                className="form-control mt-2"
+                className="form-control mt-2 text-center"
               >
                 <option value={ROLES.USER}>{ROLES.USER}</option>
                 <option value={ROLES.ADMIN}>{ROLES.ADMIN}</option>

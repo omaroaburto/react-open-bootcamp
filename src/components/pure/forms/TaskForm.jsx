@@ -51,7 +51,7 @@ const TaskForm = ({ add }) => {
           <option value={LEVELS.BLOCKING}>Blocking</option>
         </select>
       </div> 
-        <button type="submit" className="btn btn-lg btn-primary">Add Task</button>
+        <button type="submit" className="btn btn-lg btn-primary mt-2 form-control">Add Task</button>
        
     </form>
   );

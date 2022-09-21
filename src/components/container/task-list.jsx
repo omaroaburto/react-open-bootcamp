@@ -25,14 +25,61 @@ const TaskListComponent = ({ task, complete, remove }) => {
   );
   const [tasks, setTaks] = useState([defaultTaks1, defaultTaks2, defaultTaks3]);
   const [loading, setLoading] = useState(true);
-  //control de ciclo de vida
-  useEffect(() => {
-    console.log("Taks state has been modified");
-    setLoading(false);
-    return () => {
-      console.log("TaskList component is going to ammount.");
-    };
-  }, [tasks]);
+
+  const Spinner = () => {
+    return (
+      <div className="text-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
+      </div>
+    );
+  };
+  const spinnerTable = <Spinner></Spinner>
+
+  const Table = () => {
+    return (
+      <table className="table" style={{ textAlign: "center" }}>
+        <thead>
+          <tr>
+            <th scope="col">
+              <span className="ms-2">Title</span>
+            </th>
+            <th scope="col">
+              <span className="ms-2">Description</span>
+            </th>
+            <th scope="col">
+              <span className="ms-2">Priority</span>
+            </th>
+            <th scope="col">
+              <span className="ms-2">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.map((task, index) => {
+            return (
+              <TaskComponent
+                key={index}
+                task={task}
+                complete={completeTask}
+                remove={removeTask}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  };
+
+  let TaskTable =
+    tasks.length > 0 ? (
+      <Table></Table>
+    ) : (
+      <h5 style={{ width: "400px", alignText: "center" }}>
+        It don't exist tasks
+      </h5>
+    );
 
   const completeTask = (task) => {
     console.log("Complete this Task: ", task);
@@ -44,7 +91,7 @@ const TaskListComponent = ({ task, complete, remove }) => {
 
   const removeTask = (task) => {
     console.log("Delete Task: ", task);
-    const newTasks = tasks.filter(myTask => myTask !== task);
+    const newTasks = tasks.filter((myTask) => myTask !== task);
     setTaks(newTasks);
     /**
      * ? otra forma
@@ -53,30 +100,43 @@ const TaskListComponent = ({ task, complete, remove }) => {
      * tempTasks.splice(index,1);
      * setTasks[tempTasks];
      */
-  }
+  };
 
   const addTask = (newTask) => {
-    console.log("add task"); 
-    console.log("la tarea es ",newTask.level)
+    console.log("add task");
+    console.log("la tarea es ", newTask.level);
     const tempTask = [...tasks];
     tempTask.push(newTask);
     setTaks(tempTask);
-  }
+  };
+
+  //control de ciclo de vida
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => {
+      console.log("TaskList component is going to ammount.");
+    };
+  }, [tasks]);
 
   return (
     <div>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '5px',
-        justifyContent: 'center',
-        width: '100vw'
-      }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "20px",
+          justifyContent: "center",
+          width: "100vw",
+        }}
+      >
         <TaskForm add={addTask} />
         <div
           className="card"
           style={{
-            boxShadow: "5px 5px 5px black", 
+            boxShadow: "5px 5px 5px black",
+            minWidth: "400px"
           }}
         >
           <div className="card-header p-3">
@@ -91,36 +151,8 @@ const TaskListComponent = ({ task, complete, remove }) => {
             }}
             data-mdb-perfect-scrollbar="true"
           >
-            <table className="table" style={{ textAlign: "center" }}>
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <span className="ms-2">Title</span>
-                  </th>
-                  <th scope="col">
-                    <span className="ms-2">Description</span>
-                  </th>
-                  <th scope="col">
-                    <span className="ms-2">Priority</span>
-                  </th>
-                  <th scope="col">
-                    <span className="ms-2">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {tasks.map((task, index) => {
-                  return (
-                    <TaskComponent
-                      key={index}
-                      task={task}
-                      complete={completeTask}
-                      remove={removeTask}
-                    />
-                  );
-                })}
-              </tbody>
-            </table>
+            {/* task table*/}
+            {loading ? spinnerTable : TaskTable}
           </div>
         </div>
       </div>
