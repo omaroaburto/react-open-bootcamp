@@ -17,7 +17,7 @@ import './App.css';
 function App() {
   
   return (
-    <div>  
+    <div className="App">  
         <TaskListComponent/> 
         {/* <RegisterFormFormik></RegisterFormFormik>  */}
     </div>

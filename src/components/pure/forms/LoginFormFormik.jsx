@@ -1,6 +1,7 @@
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import { MY_AUTH_APP, useAuthContext } from "../../../context/AuthContext";
 
 const passwordRegex = /^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]/;
 const errorPasswordRegex =
@@ -23,6 +24,9 @@ const LoginFormFormik = () => {
   };
 
   const styleLoginForm = {
+    margin: "0 auto",
+    marginTop: "40px",
+    maxWidth:"520px",
     backgroundColor: "tomato",
     boxShadow: "5px 5px 5px black",
     padding: "20px",
@@ -32,17 +36,18 @@ const LoginFormFormik = () => {
     border: "1px solid rgba(0, 0, 0, 0.3)",
   };
 
+  const {login} = useAuthContext();
+  const handleSubmit = (values, {setSubmitting}) =>{
+     setSubmitting(false); 
+     if(values.email === MY_AUTH_APP.userName && values.password === MY_AUTH_APP.password)
+        login()
+  }
   return (
     <div>
       <Formik
         initialValues={initLogin}
         validationSchema={loginSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={handleSubmit}
       >
         {({
           values,
